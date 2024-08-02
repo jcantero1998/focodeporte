@@ -1,0 +1,18 @@
+mat-card {
+  margin: 16px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-card-actions{
+  padding-top: 0px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+mat-form-field:not(:first-child) {
+  margin-top: 10px;
+}
+

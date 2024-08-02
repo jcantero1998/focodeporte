@@ -1,0 +1,8 @@
+mat-toolbar {
+  justify-content: center;
+  min-height: 64px;
+}
+
+span {
+  font-size: 14px;
+}

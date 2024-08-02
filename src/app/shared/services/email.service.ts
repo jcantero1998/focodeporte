@@ -1,12 +1,15 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import { EmailMessage } from '../../core/models/email-message.interface';
+import { SpinnerService } from '../../core/services/spinner.service';
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
-import { EmailMessage } from '../interfaces/email-message';
-import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmailService {
+
+  private readonly spinnerService = inject(SpinnerService)
 
   constructor() {
     emailjs.init(environment.emailJs.userId);
@@ -20,10 +23,14 @@ export class EmailService {
       message: message.message
     };
 
+    this.spinnerService.show();
+
     return emailjs.send(
       environment.emailJs.serviceId,
       environment.emailJs.templateId,
       templateParams
-    );
+    ).finally(() => {
+      this.spinnerService.hide();
+    });
   }
 }

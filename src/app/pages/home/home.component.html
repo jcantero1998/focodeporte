@@ -1,0 +1,26 @@
+<div class="hero-section">
+  <img src="images/focodeporte.png" height="300px" width="300px" alt="Logo de Foco Deporte">
+</div>
+
+<div class="slider">
+  <app-image-slider
+    [indicatorsVisible]="true"
+    [animationSpeed]="800"
+    [slides]="slides"
+    [autoPlay]="true"
+    [autoPlaySpeed]="5000"
+  ></app-image-slider>
+</div>
+
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>{{title.getTitle()}}</mat-card-title>
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+
+    contenido
+
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,49 @@
+<div class="toolbar-container">
+  <mat-toolbar>
+    @if (isHandset$ | async) {
+    <button class="toggle-button" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    }
+    <img src="images/brain_white.svg" height="28px" width="28px" alt="Logo de Foco Deporte">
+    <span class="title">Focodeporte</span>
+    <span class="spacer"></span>
+    @if (!(isHandset$ | async)) {
+    <mat-nav-list>
+      @for (item of rootRoutes; track $index) {
+        <mat-list-item class="horizontal-mat-list-item" [routerLink]="item.path" #link="routerLinkActive" routerLinkActive [activated]="link.isActive">
+          <span class="matListItemTitle">
+            {{ item.title }}
+          </span>
+        </mat-list-item>
+      }
+    </mat-nav-list>
+
+    }
+  </mat-toolbar>
+</div>
+
+<mat-sidenav-container class="sidenav-container" (backdropClick)="sidenav.close()">
+  <mat-sidenav #sidenav fixedInViewport mode='over' opened='false' (keydown.escape)="sidenav.close()">
+    <mat-toolbar>Menú</mat-toolbar>
+    <mat-nav-list>
+      @for (item of rootRoutes; track $index) {
+        <mat-list-item [routerLink]="item.path" #link="routerLinkActive" routerLinkActive [activated]="link.isActive" (click)="sidenav.close()">
+          <span class="matListItemTitle">
+            {{ item.title }}
+          </span>
+        </mat-list-item>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="main-content-container">
+      <div class="main-content">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<app-footer/>
+

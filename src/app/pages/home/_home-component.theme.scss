@@ -1,0 +1,7 @@
+@use "@angular/material" as mat;
+
+@mixin theme($theme) {
+  .hero-section {
+    background-image: linear-gradient(to top left, mat.get-theme-color($theme, primary), mat.get-theme-color($theme, inverse-primary), mat.get-theme-color($theme, surface));
+  }
+}

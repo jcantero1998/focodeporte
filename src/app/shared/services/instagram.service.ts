@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Posts } from '../interfaces/instagram.interface';
+import { Posts } from '../core/models/instagram.interface';
 import { environment } from '../../environments/environment';
 
 @Injectable({
