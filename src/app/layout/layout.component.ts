@@ -11,6 +11,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { routes } from '../app.routes';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FooterComponent } from "../shared/components/footer/footer.component";
+import { ToolbarComponent } from "../shared/components/toolbar/toolbar.component";
 
 @Component({
   selector: 'app-layout',
@@ -26,7 +27,8 @@ import { FooterComponent } from "../shared/components/footer/footer.component";
     AsyncPipe,
     RouterLink,
     RouterLinkActive,
-    FooterComponent
+    FooterComponent,
+    ToolbarComponent
 ]
 })
 export class LayoutComponent {

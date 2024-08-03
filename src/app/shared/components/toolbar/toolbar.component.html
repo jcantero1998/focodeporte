@@ -1,0 +1,21 @@
+<mat-toolbar>
+  @if (isHandset$ | async) {
+    <button mat-icon-button (click)="drawer.toggle()" aria-label="toolbar icon-button with menu icon">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+  }
+  <img src="images/brain.svg" height="28px" width="28px" alt="Foco Deporte logo">
+  <span class="title">Focodeporte</span>
+  <span class="toolbar-spacer"></span>
+  @if (!(isHandset$ | async)) {
+    <mat-nav-list>
+      @for (item of rootRoutes; track $index) {
+        <mat-list-item class="horizontal-mat-list-item" [routerLink]="item.path" #link="routerLinkActive" routerLinkActive [activated]="link.isActive">
+          <span>
+            {{ item.title }}
+          </span>
+        </mat-list-item>
+      }
+    </mat-nav-list>
+  }
+</mat-toolbar>
