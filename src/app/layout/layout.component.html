@@ -4,9 +4,8 @@
     <mat-nav-list>
       @for (item of rootRoutes; track $index) {
         <mat-list-item [routerLink]="item.path" #link="routerLinkActive" routerLinkActive [activated]="link.isActive" (click)="drawer.close()">
-          <span class="matListItemTitle">
-            {{ item.title }}
-          </span>
+          <mat-icon matListItemIcon>{{ item.data?.['icon'] }}</mat-icon>
+          <div matListItemTitle>{{ item.title }}</div>
         </mat-list-item>
       }
     </mat-nav-list>

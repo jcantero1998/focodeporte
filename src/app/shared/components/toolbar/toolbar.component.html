@@ -11,9 +11,8 @@
     <mat-nav-list>
       @for (item of rootRoutes; track $index) {
         <mat-list-item class="horizontal-mat-list-item" [routerLink]="item.path" #link="routerLinkActive" routerLinkActive [activated]="link.isActive">
-          <span>
-            {{ item.title }}
-          </span>
+          <mat-icon matListItemIcon>{{ item.data?.['icon'] }}</mat-icon>
+          <div matListItemTitle>{{ item.title }}</div>
         </mat-list-item>
       }
     </mat-nav-list>
