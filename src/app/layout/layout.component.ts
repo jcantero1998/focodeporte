@@ -12,6 +12,7 @@ import { routes } from '../app.routes';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FooterComponent } from "../shared/components/footer/footer.component";
 import { ToolbarComponent } from "../shared/components/toolbar/toolbar.component";
+import { ThemeService } from '@shared/services/theme.service';
 
 @Component({
   selector: 'app-layout',
@@ -33,11 +34,19 @@ import { ToolbarComponent } from "../shared/components/toolbar/toolbar.component
 })
 export class LayoutComponent {
   private breakpointObserver = inject(BreakpointObserver);
+  private themeService = inject(ThemeService);
   rootRoutes = routes.filter(r=>r.path);
-
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
+
+    toggleTheme(): void {
+      this.themeService.toggleTheme();
+    }
+
+    isDarkMode(): boolean {
+      return this.themeService.isDarkMode();
+    }
 }

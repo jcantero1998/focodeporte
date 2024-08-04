@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -7,6 +7,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { Route, RouterLink, RouterLinkActive } from '@angular/router';
+import { ThemeService } from '@shared/services/theme.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -28,4 +29,15 @@ export class ToolbarComponent {
   @Input({ required: true }) drawer!: MatDrawer;
   @Input({ required: true }) rootRoutes!: Route[];
   @Input({ required: true }) isHandset$!: Observable<boolean>;
+
+  private themeService = inject(ThemeService);
+
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+  }
+
+  isDarkMode(): boolean {
+    return this.themeService.isDarkMode();
+  }
+
 }

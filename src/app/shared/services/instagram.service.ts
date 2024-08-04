@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Posts } from '../core/models/instagram.interface';
-import { environment } from '../../environments/environment';
+import { Posts } from '@core/models/instagram.interface';
+import { environment } from '@envs/environment';
 
 @Injectable({
   providedIn: 'root'

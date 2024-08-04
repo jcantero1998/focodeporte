@@ -5,21 +5,21 @@
 
 @include mat.core();
 
-$theme: m3-theme.$light-theme;
+$light-theme: m3-theme.$light-theme;
 $dark-theme: m3-theme.$dark-theme;
 
-:root {
-  @include mat.all-component-themes($theme);
-  @include layout-component.theme($theme);
-  @include home-component.theme($theme);
-  @include mat.color-variants-backwards-compatibility($theme);
+.light-theme {
+  @include mat.all-component-themes($light-theme);
+  @include layout-component.theme($light-theme);
+  @include home-component.theme($light-theme);
+  @include mat.color-variants-backwards-compatibility($light-theme);
+}
 
-  @media (prefers-color-scheme: light) {
-    @include mat.all-component-colors($dark-theme);
-    @include layout-component.theme($theme);
-    @include home-component.theme($theme);
-    @include mat.color-variants-backwards-compatibility($dark-theme);
-  }
+.dark-theme {
+  @include mat.all-component-themes($dark-theme);
+  @include layout-component.theme($dark-theme);
+  @include home-component.theme($dark-theme);
+  @include mat.color-variants-backwards-compatibility($dark-theme);
 }
 
 html,
