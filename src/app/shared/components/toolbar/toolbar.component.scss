@@ -6,7 +6,14 @@
   margin-left: 2px;
  }
 
-.horizontal-mat-list-item {
+ .horizontal-mat-list-item {
   display: inline-flex;
   width: auto;
+  padding: 10px;
+  margin: 2px;
+}
+
+.mdc-list-item--with-leading-icon .mdc-list-item__start {
+  margin-inline-start: 0;
+  margin-inline-end: 3px;
 }
