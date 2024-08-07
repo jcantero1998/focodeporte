@@ -25,18 +25,17 @@
   object-fit: contain;
 }
 
-.arrow-down {
-  position: absolute;
-  bottom: 20px;
-  font-size: 3rem;
-  cursor: pointer;
-  color: black;
-}
-
 .content-section {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.icon-display {
+  position: absolute;
+  bottom: 20px;
+  transform: scale(2);
+  cursor: pointer;
 }

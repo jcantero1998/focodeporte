@@ -26,9 +26,7 @@
 </mat-card> -->
 <div id="home" #home class="hero-section" appSectionObserver (sectionChange)="onSectionChange($event)">
   <img src="images/focodeporte.png" alt="Logo de Foco Deporte" class="main-image">
-  <div class="arrow-down" (click)="scrollToServicesSection()">
-      &#9660;
-  </div>
+    <mat-icon (click)="scrollToServicesSection()" class="icon-display" aria-label="Next section">expand_more</mat-icon>
 </div>
 <div id="services" #services class="content-section" style="background-color: red;" appSectionObserver (sectionChange)="onSectionChange($event)">
   <h2>Servicios</h2>
