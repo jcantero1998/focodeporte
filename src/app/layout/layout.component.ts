@@ -13,6 +13,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FooterComponent } from "../shared/components/footer/footer.component";
 import { ToolbarComponent } from "../shared/components/toolbar/toolbar.component";
 import { ThemeService } from '@shared/services/theme.service';
+import { NavigationService } from '@shared/services/navigation.service';
 
 @Component({
   selector: 'app-layout',
@@ -37,6 +38,7 @@ export class LayoutComponent implements AfterViewInit{
   @ViewChild('toolbar', { read: ElementRef }) toolbar: ElementRef | undefined;
   @ViewChild('content', { read: ElementRef }) content: ElementRef | undefined;
 
+  private navigationService = inject(NavigationService);
   private breakpointObserver = inject(BreakpointObserver);
   private themeService = inject(ThemeService);
   rootRoutes = routes.filter(r=>r.path);
@@ -70,4 +72,32 @@ export class LayoutComponent implements AfterViewInit{
 
       this.content!.nativeElement.style.height = `${contentHeight}px`;
     }
+
+    scrollToSection(elementRef: string) {
+      switch (elementRef) {
+        case 'services':
+          this.navigationService.scrollToServicesSection();
+          break;
+        case 'aboutMe':
+          this.navigationService.scrollToAboutMeSection();
+          break;
+        case 'contact':
+          this.navigationService.scrollToContactSection();
+          break;
+        case 'blog':
+          this.navigationService.scrollToBlogSection();
+          break;
+        default:
+          this.navigationService.scrollToHomeSection();
+          break;
+      }
+    }
+
+    checkActivated(elementRef: string){
+      if (elementRef === this.navigationService.getActiveSection()) {
+        return true;
+      }
+      return false;
+    }
+
 }

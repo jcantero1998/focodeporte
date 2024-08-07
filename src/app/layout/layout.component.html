@@ -3,19 +3,20 @@
     <mat-toolbar>Menú</mat-toolbar>
     <mat-nav-list>
       @for (item of rootRoutes; track $index) {
-        <mat-list-item [routerLink]="item.path" #link="routerLinkActive" routerLinkActive [activated]="link.isActive" (click)="drawer.close()">
+      <!-- To go to another route: --><!-- <mat-list-item [routerLink]="item.path" #link="routerLinkActive" routerLinkActive [activated]="link.isActive" (click)="drawer.close()">-->
+        <mat-list-item (click)="scrollToSection(item.data?.['elementRef'])" [activated]="checkActivated(item.data?.['elementRef'])" (click)="drawer.close()">
           <mat-icon matListItemIcon>{{ item.data?.['icon'] }}</mat-icon>
           <div matListItemTitle>{{ item.title }}</div>
         </mat-list-item>
       }
-      <mat-list-item class="horizontal-mat-list-item" (click)="toggleTheme()">
+      <mat-list-item (click)="toggleTheme()">
         <mat-icon matListItemIcon>{{ isDarkMode() ? 'brightness_1' : 'brightness_2' }}</mat-icon>
         <div matListItemTitle>Tema</div>
       </mat-list-item>
     </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content>
-    <app-toolbar #toolbar [drawer]="drawer" [rootRoutes]="rootRoutes" [isHandset$]="isHandset$"/>
+    <app-toolbar #toolbar [drawer]="drawer" [rootRoutes]="rootRoutes" [isHandset$]="isHandset$" (scrollToSection)="scrollToSection($event)"/>
     <div class="main-container">
       <div #content class="main-content" >
         <ng-content></ng-content>

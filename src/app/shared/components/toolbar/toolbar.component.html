@@ -15,7 +15,7 @@
     <mat-nav-list>
       @for (item of rootRoutes; track $index) {
         <!-- To go to another route: --><!-- <mat-list-item class="horizontal-mat-list-item" [routerLink]="item.path" #link="routerLinkActive" routerLinkActive [activated]="link.isActive">-->
-        <mat-list-item class="horizontal-mat-list-item" (click)="scrollToSection(item.data?.['elementRef'])" [activated]="checkActivated(item.data?.['elementRef'])">
+        <mat-list-item class="horizontal-mat-list-item" (click)="onScrollToSection(item.data?.['elementRef'])" [activated]="checkActivated(item.data?.['elementRef'])">
           <mat-icon matListItemIcon>{{ item.data?.['icon'] }}</mat-icon>
           <div matListItemTitle>{{ item.title }}</div>
         </mat-list-item>

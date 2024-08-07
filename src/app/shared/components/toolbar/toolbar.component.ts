@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, output } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -30,28 +30,13 @@ export class ToolbarComponent {
   @Input({ required: true }) drawer!: MatDrawer;
   @Input({ required: true }) rootRoutes!: Route[];
   @Input({ required: true }) isHandset$!: Observable<boolean>;
-
   private themeService = inject(ThemeService);
   private navigationService = inject(NavigationService);
 
-  scrollToSection(elementRef: string) {
-    switch (elementRef) {
-      case 'services':
-        this.navigationService.scrollToServicesSection();
-        break;
-      case 'aboutMe':
-        this.navigationService.scrollToAboutMeSection();
-        break;
-      case 'contact':
-        this.navigationService.scrollToContactSection();
-        break;
-      case 'blog':
-        this.navigationService.scrollToBlogSection();
-        break;
-      default:
-        this.navigationService.scrollToHomeSection();
-        break;
-    }
+  public scrollToSection = output<string>();
+
+  onScrollToSection(elementRef: string) {
+    this.scrollToSection.emit(elementRef);
   }
 
   toggleTheme(): void {
