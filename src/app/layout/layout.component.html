@@ -15,12 +15,12 @@
     </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content>
-    <app-toolbar [drawer]="drawer" [rootRoutes]="rootRoutes" [isHandset$]="isHandset$"/>
+    <app-toolbar #toolbar [drawer]="drawer" [rootRoutes]="rootRoutes" [isHandset$]="isHandset$"/>
     <div class="main-container">
-      <div class="main-content">
+      <div #content class="main-content" >
         <ng-content></ng-content>
+        <app-footer/>
       </div>
     </div>
-    <app-footer/>
   </mat-drawer-content>
 </mat-drawer-container>

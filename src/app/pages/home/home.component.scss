@@ -1,12 +1,42 @@
+// .hero-section {
+//   display: flex;
+//   justify-content: center;
+// }
+
+// .slider {
+//   margin: 16px;
+// }
+
+// mat-card {
+//   margin: 16px;
+// }
+
 .hero-section {
+  height: 100%;
+  position: relative;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-.slider {
-  margin: 16px;
+.main-image {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
 }
 
-mat-card {
-  margin: 16px;
+.arrow-down {
+  position: absolute;
+  bottom: 20px;
+  font-size: 3rem;
+  cursor: pointer;
+  color: black;
+}
+
+.content-section {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }

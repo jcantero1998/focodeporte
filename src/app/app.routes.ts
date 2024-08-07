@@ -11,7 +11,8 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/home/home.component').then((c) => c.DashboardComponent),
     title: 'Inicio',
     data: {
-      icon: 'home'
+      icon: 'home',
+      elementRef:'home'
     }
   },
   {
@@ -19,7 +20,8 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/services/services.component').then((c) => c.ServicesComponent),
     title: 'Servicios',
     data: {
-      icon: 'work'
+      icon: 'work',
+      elementRef:'services'
     }
   },
   {
@@ -27,7 +29,8 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/about-me/about-me.component').then((c) => c.AboutMeComponent),
     title: 'Sobre mí',
     data: {
-      icon: 'account_box'
+      icon: 'account_box',
+      elementRef:'aboutMe'
     }
   },
   {
@@ -35,7 +38,8 @@ export const routes: Routes = [
     loadComponent: () => import('.//pages/contact-form/contact-form.component').then((c) => c.AddressFormComponent),
     title: 'Contacto',
     data: {
-      icon: 'email'
+      icon: 'email',
+      elementRef:'contact'
     }
   },
   {
@@ -43,7 +47,8 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/blog/blog.component').then((c) => c.BlogComponent),
     title: 'Blog',
     data: {
-      icon: 'chat'
+      icon: 'chat',
+      elementRef:'blog'
     }
   },
 ];

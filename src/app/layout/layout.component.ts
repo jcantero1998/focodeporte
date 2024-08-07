@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, inject, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -32,7 +32,11 @@ import { ThemeService } from '@shared/services/theme.service';
     ToolbarComponent
 ]
 })
-export class LayoutComponent {
+export class LayoutComponent implements AfterViewInit{
+
+  @ViewChild('toolbar', { read: ElementRef }) toolbar: ElementRef | undefined;
+  @ViewChild('content', { read: ElementRef }) content: ElementRef | undefined;
+
   private breakpointObserver = inject(BreakpointObserver);
   private themeService = inject(ThemeService);
   rootRoutes = routes.filter(r=>r.path);
@@ -48,5 +52,22 @@ export class LayoutComponent {
 
     isDarkMode(): boolean {
       return this.themeService.isDarkMode();
+    }
+
+    ngAfterViewInit(): void {
+      this.adjustContentHeight();
+    }
+
+    @HostListener('window:resize', ['$event'])
+    onResize() {
+      this.adjustContentHeight();
+    }
+
+    private adjustContentHeight() {
+      const toolbarHeight = this.toolbar!.nativeElement.offsetHeight;
+      const windowHeight = window.innerHeight;
+      const contentHeight = windowHeight - toolbarHeight;
+
+      this.content!.nativeElement.style.height = `${contentHeight}px`;
     }
 }
