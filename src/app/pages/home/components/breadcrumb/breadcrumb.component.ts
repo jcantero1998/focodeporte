@@ -3,7 +3,7 @@ import { BreadcrumbItem } from '@pages/home/interfaces/breadcrumb.interface';
 import { BreadcrumbService } from '@pages/home/services/breadcrumb.service';
 
 @Component({
-  selector: 'app-breadcrumb',
+  selector: 'home-breadcrumb',
   standalone: true,
   imports: [],
   templateUrl: './breadcrumb.component.html',
@@ -23,14 +23,11 @@ export class BreadcrumbComponent implements OnInit{
       case 'services':
         this.breadcrumbService.scrollToServicesSection();
         break;
-      case 'aboutMe':
-        this.breadcrumbService.scrollToAboutMeSection();
+      case 'posts':
+        this.breadcrumbService.scrollToPostsSection();
         break;
-      case 'contact':
-        this.breadcrumbService.scrollToContactSection();
-        break;
-      case 'blog':
-        this.breadcrumbService.scrollToBlogSection();
+      case 'instagram':
+        this.breadcrumbService.scrollToinstagramSection();
         break;
       default:
         this.breadcrumbService.scrollToHomeSection();

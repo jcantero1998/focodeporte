@@ -20,10 +20,12 @@
   </div>
   }
 
-  <button (click)="next()" class="nextButton">
-    <mat-icon class="icon-display" aria-label="Next image">navigate_next</mat-icon>
-  </button>
-  <button (click)="previous()" class="previousButton">
-    <mat-icon class="icon-display" aria-label="Previous image">navigate_before</mat-icon>
-  </button>
+  @if (buttonsVisible) {
+    <button (click)="next()" class="nextButton">
+      <mat-icon class="icon-display" aria-label="Next image">navigate_next</mat-icon>
+    </button>
+    <button (click)="previous()" class="previousButton">
+      <mat-icon class="icon-display" aria-label="Previous image">navigate_before</mat-icon>
+    </button>
+  }
 </div>

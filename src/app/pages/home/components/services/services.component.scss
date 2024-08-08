@@ -1,0 +1,51 @@
+.services-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+}
+
+.hero-container {
+  background-image: url('/images/home_hero.png');
+  background-size: cover;
+  background-position: center;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}
+
+.card-container{
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+mat-card {
+  max-width: 540px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+app-image-slider {
+  max-width: 540px;
+  max-height: 540px;
+}
+
+.info-button{
+  border-radius: 5px;
+}
+
+.card-actions {
+  justify-content: center;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}

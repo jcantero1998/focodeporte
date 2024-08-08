@@ -1,22 +1,20 @@
-<app-breadcrumb />
+<home-breadcrumb />
 
-<div id="home" #home class="hero-section" appSectionObserver (sectionChange)="onSectionChange($event)">
+<section id="home" #home class="hero-section" appSectionObserver (sectionChange)="onSectionChange($event)">
   <img src="images/focodeporte.png" alt="Logo de Foco Deporte" class="main-image">
     <mat-icon (click)="scrollToServicesSection()" class="icon-display" aria-label="Next section">expand_more</mat-icon>
-</div>
-<div id="services" #services class="content-section" style="background-color: red;" appSectionObserver (sectionChange)="onSectionChange($event)">
-  <h2>Servicios</h2>
-  <p>Descripción de los servicios ofrecidos.</p>
-</div>
-<div id="aboutMe" #aboutMe class="content-section" style="background-color: blue;" appSectionObserver (sectionChange)="onSectionChange($event)">
-  <h2>Sobre mí</h2>
-  <p>Información sobre el profesional.</p>
-</div>
-<div id="contact" #contact class="content-section" style="background-color: chartreuse;" appSectionObserver (sectionChange)="onSectionChange($event)">
-  <h2>Contacto</h2>
-  <p>Información de contacto.</p>
-</div>
-<div id="blog" #blog class="content-section" style="background-color: orange;" appSectionObserver (sectionChange)="onSectionChange($event)">
-  <h2>Blog</h2>
-  <p>Artículos y publicaciones.</p>
-</div>
+</section>
+
+<section id="services" #services appSectionObserver (sectionChange)="onSectionChange($event)">
+  <home-services />
+</section>
+
+<!-- TODO: Posts
+<section id="posts" #posts appSectionObserver (sectionChange)="onSectionChange($event)">
+  <home-posts />
+</section> -->
+
+<!-- TODO: Instagram
+<section id="instagram" #instagram appSectionObserver (sectionChange)="onSectionChange($event)">
+  <home-instagram />
+</section> -->

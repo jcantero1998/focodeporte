@@ -1,0 +1,29 @@
+<div class="services-container">
+
+  <section class="hero-container">
+    <div class="hero-content">
+      <h1>Tu mente es tu mejor aliada o tu peor enemiga. <br> Tú decides cómo usarla</h1>
+    </div>
+  </section>
+
+  <section class="card-container">
+    <mat-card>
+      <app-image-slider
+        [indicatorsVisible]="true"
+        [buttonsVisible]="false"
+        [animationSpeed]="800"
+        [slides]="slides"
+        [autoPlay]="true"
+        [autoPlaySpeed]="5000"
+      ></app-image-slider>
+      <mat-card-actions class="card-actions">
+        <button mat-fab extended class="info-button">
+          <mat-icon>info</mat-icon>
+          Saber más
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </section>
+
+</div>
+

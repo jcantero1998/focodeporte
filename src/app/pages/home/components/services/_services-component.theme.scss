@@ -1,0 +1,11 @@
+@use "@angular/material" as mat;
+
+@mixin theme($theme) {
+  mat-card {
+    background-color: mat.get-theme-color($theme, surface-bright);
+  }
+  .info-button {
+    background-color: mat.get-theme-color($theme, surface);
+    color: mat.get-theme-color($theme, on-surface);;
+  }
+}

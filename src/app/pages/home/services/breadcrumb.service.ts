@@ -9,16 +9,16 @@ export class BreadcrumbService {
   private breadcrumbItems: BreadcrumbItem[] = [
     { label: 'Inicio', id: 'home' },
     { label: 'Servicios', id: 'services' },
-    { label: 'Sobre mí', id: 'aboutMe' },
-    { label: 'Contacto', id: 'contact' },
-    { label: 'Blog', id: 'blog' },
+    { label: 'Publicaciones', id: 'posts' },
+    { label: 'Instagram', id: 'instagram' },
   ];
+
+  private activeSection: string = 'home';
+
   private home: ElementRef | undefined;
   private services: ElementRef | undefined;
-  private aboutMe: ElementRef | undefined;
-  private contact: ElementRef | undefined;
-  private blog: ElementRef | undefined;
-  private activeSection: string = 'home';
+  private posts: ElementRef | undefined;
+  private instagram: ElementRef | undefined;
 
   public getBreadcrumbItems() {
     return this.breadcrumbItems;
@@ -32,16 +32,12 @@ export class BreadcrumbService {
     this.services = element;
   }
 
-  public setAboutMeRef(element: ElementRef) {
-    this.aboutMe = element;
+  public setPostsRef(element: ElementRef) {
+    this.posts = element;
   }
 
-  public setContactRef(element: ElementRef) {
-    this.contact = element;
-  }
-
-  public setBlogRef(element: ElementRef) {
-    this.blog = element;
+  public setInstagramRef(element: ElementRef) {
+    this.instagram = element;
   }
 
   public setActiveSection(section: string) {
@@ -60,16 +56,12 @@ export class BreadcrumbService {
     this.services!.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
   }
 
-  scrollToAboutMeSection() {
-    this.aboutMe!.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
+  scrollToPostsSection() {
+    this.posts!.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
   }
 
-  scrollToContactSection() {
-    this.contact!.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
-  }
-
-  scrollToBlogSection() {
-    this.blog!.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
+  scrollToinstagramSection() {
+    this.instagram!.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
   }
 
 }
