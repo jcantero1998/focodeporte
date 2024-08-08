@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, inject, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -13,6 +13,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FooterComponent } from "../shared/components/footer/footer.component";
 import { ToolbarComponent } from "../shared/components/toolbar/toolbar.component";
 import { ThemeService } from '@shared/services/theme.service';
+import { LayoutService } from '@shared/services/layout.service';
 
 @Component({
   selector: 'app-layout',
@@ -32,9 +33,14 @@ import { ThemeService } from '@shared/services/theme.service';
     ToolbarComponent
 ]
 })
-export class LayoutComponent {
+export class LayoutComponent implements AfterViewInit{
+
+  @ViewChild('toolbar', { read: ElementRef }) toolbar: ElementRef | undefined;
+
   private breakpointObserver = inject(BreakpointObserver);
   private themeService = inject(ThemeService);
+  private layoutService = inject(LayoutService);
+
   rootRoutes = routes.filter(r=>r.path);
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -42,11 +48,28 @@ export class LayoutComponent {
       shareReplay()
     );
 
-    toggleTheme(): void {
-      this.themeService.toggleTheme();
-    }
+  ngAfterViewInit(): void {
+    this.setlayoutHeight();
+  }
 
-    isDarkMode(): boolean {
-      return this.themeService.isDarkMode();
-    }
+  setlayoutHeight(): void {
+    if (this.toolbar) this.layoutService.setToolbarHeight(
+      this.toolbar.nativeElement.offsetHeight
+    );
+    this.layoutService.setWindowHeight(window.innerHeight);
+  }
+
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+  }
+
+  isDarkMode(): boolean {
+    return this.themeService.isDarkMode();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.setlayoutHeight();
+  }
+
 }

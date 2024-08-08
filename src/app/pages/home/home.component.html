@@ -1,26 +1,22 @@
-<div class="hero-section">
-  <img src="images/focodeporte.png" height="300px" width="300px" alt="Logo de Foco Deporte">
+<app-breadcrumb />
+
+<div id="home" #home class="hero-section" appSectionObserver (sectionChange)="onSectionChange($event)">
+  <img src="images/focodeporte.png" alt="Logo de Foco Deporte" class="main-image">
+    <mat-icon (click)="scrollToServicesSection()" class="icon-display" aria-label="Next section">expand_more</mat-icon>
 </div>
-
-<div class="slider">
-  <app-image-slider
-    [indicatorsVisible]="true"
-    [animationSpeed]="800"
-    [slides]="slides"
-    [autoPlay]="true"
-    [autoPlaySpeed]="5000"
-  ></app-image-slider>
+<div id="services" #services class="content-section" style="background-color: red;" appSectionObserver (sectionChange)="onSectionChange($event)">
+  <h2>Servicios</h2>
+  <p>Descripción de los servicios ofrecidos.</p>
 </div>
-
-<mat-card appearance="outlined">
-  <mat-card-header>
-    <mat-card-title-group>
-      <mat-card-title>{{title.getTitle()}}</mat-card-title>
-    </mat-card-title-group>
-  </mat-card-header>
-  <mat-card-content>
-
-    contenido
-
-  </mat-card-content>
-</mat-card>
+<div id="aboutMe" #aboutMe class="content-section" style="background-color: blue;" appSectionObserver (sectionChange)="onSectionChange($event)">
+  <h2>Sobre mí</h2>
+  <p>Información sobre el profesional.</p>
+</div>
+<div id="contact" #contact class="content-section" style="background-color: chartreuse;" appSectionObserver (sectionChange)="onSectionChange($event)">
+  <h2>Contacto</h2>
+  <p>Información de contacto.</p>
+</div>
+<div id="blog" #blog class="content-section" style="background-color: orange;" appSectionObserver (sectionChange)="onSectionChange($event)">
+  <h2>Blog</h2>
+  <p>Artículos y publicaciones.</p>
+</div>

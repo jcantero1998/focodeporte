@@ -1,0 +1,9 @@
+<nav mat-tab-nav-bar class="breadcrumb">
+  @for (item of breadcrumbItems; track $index) {
+    <a mat-tab-link
+      (click)="scrollToSection(item.id)"
+      [class.active]="checkActivated(item.id)">
+      {{ item.label }}
+    </a>
+  }
+</nav>
