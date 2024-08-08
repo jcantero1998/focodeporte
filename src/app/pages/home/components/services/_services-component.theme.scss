@@ -2,10 +2,11 @@
 
 @mixin theme($theme) {
   mat-card {
-    background-color: mat.get-theme-color($theme, surface-bright);
+    background-image: linear-gradient(to top left, mat.get-theme-color($theme, primary-container), mat.get-theme-color($theme, inverse-primary));
+
   }
   .info-button {
-    background-color: mat.get-theme-color($theme, surface);
-    color: mat.get-theme-color($theme, on-surface);;
+    background-color: mat.get-theme-color($theme, primary);
+    color: mat.get-theme-color($theme, on-primary);;
   }
 }
