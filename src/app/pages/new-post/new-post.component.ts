@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { Title } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { QuillModule } from 'ngx-quill';
+import { PostsService } from '@shared/services/posts.service';
 
 @Component({
   selector: 'app-new-post',
@@ -25,9 +26,11 @@ import { QuillModule } from 'ngx-quill';
   ]
 })
 export class NewPostComponent {
+
   title = inject(Title);
   private formBuilder = inject(FormBuilder);
   private snackBar = inject(MatSnackBar);
+  private postService = inject(PostsService);
 
   newPostForm: FormGroup = this.formBuilder.group({
     title: ['', Validators.required],
@@ -36,10 +39,28 @@ export class NewPostComponent {
     content: ''
   });
 
-  async sendEmail() {
+
+  async onSubmit() {
     if (this.newPostForm.valid) {
-      console.log(this.newPostForm.value);
+      const post = this.newPostForm.value;
+      console.log(post);
+      try {
+        const response = await this.postService.newPost(post);
+        console.log('SUCCESS!', response);
+        this.snackBar.open("Post creado con éxito", "Cerrar");
+        this.resetForm();
+      } catch (error) {
+        console.error('FAILED...', error);
+        this.snackBar.open("Se ha producido un error", "Cerrar");
+      }
     }
+  }
+
+  resetForm() {
+    this.newPostForm.reset();
+    Object.keys(this.newPostForm.controls).forEach(key => {
+      this.newPostForm.get(key)!.setErrors(null) ;
+    });
   }
 
 }

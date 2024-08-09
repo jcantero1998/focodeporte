@@ -5,7 +5,7 @@
         <mat-card-title>{{title.getTitle()}}</mat-card-title>
       </mat-card-title-group>
     </mat-card-header>
-    <form [formGroup]="newPostForm" (ngSubmit)="sendEmail()">
+    <form [formGroup]="newPostForm" (ngSubmit)="onSubmit()">
       <mat-card-content>
 
         <mat-form-field appearance="outline" class="full-width">
