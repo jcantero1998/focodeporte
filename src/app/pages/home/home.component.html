@@ -10,7 +10,20 @@
     <home-services />
   </div>
   <div id="posts" #posts appSectionObserver (sectionChange)="onSectionChange($event)">
-    <home-posts />
+    <mat-toolbar>
+      <mat-icon>description</mat-icon>
+      <span>Últimas publicaciones</span>
+      <span class="toolbar-spacer"></span>
+      <button mat-button aria-label="Example icon-button with heart icon" routerLink="/new-post">
+        <mat-icon>note_add</mat-icon>
+        Añadir post
+      </button>
+      <button mat-button aria-label="Example icon-button with share icon">
+        <mat-icon>my_library_books</mat-icon>
+        Ver más
+      </button>
+    </mat-toolbar>
+    <app-posts />
   </div>
 
   <!-- TODO: Instagram

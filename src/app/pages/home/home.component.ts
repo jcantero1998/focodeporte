@@ -11,8 +11,9 @@ import { BreadcrumbComponent } from "./components/breadcrumb/breadcrumb.componen
 import { BreadcrumbService } from './services/breadcrumb.service';
 import { SectionObserverDirective } from '@shared/directives/section-observer.directive';
 import { ServicesComponent } from "./components/services/services.component";
-import { PostsComponent } from "./components/posts/posts.component";
 import { InstagramComponent } from "./components/instagram/instagram.component";
+import { PostsComponent } from "../posts/posts.component";
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +32,8 @@ import { InstagramComponent } from "./components/instagram/instagram.component";
     SectionObserverDirective,
     ServicesComponent,
     PostsComponent,
-    InstagramComponent
+    InstagramComponent,
+    MatToolbarModule
 ]
 })
 export class DashboardComponent implements AfterViewInit{

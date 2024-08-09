@@ -1,1 +1,7 @@
-{{posts() | json}}
+<div class="container">
+  @for (post of posts(); track $index) {
+    <app-post [post]="post"></app-post>
+  } @empty {
+      <h1>Aún no se ha creado ningún post</h1>
+  }
+</div>

@@ -1,0 +1,17 @@
+<mat-card appearance="outlined">
+  <div class="card-image-container">
+    <img class="card-image" mat-card-image src="{{post.image}}" alt="Photo of a Shiba Inu">
+  </div>
+  <mat-card-content>
+    <p>
+      {{post.description}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions class="card-actions">
+    <!-- TODO: CREATE ROUTE AND COMPONENT TOO SEE POST BY ID -->
+    <button mat-stroked-button class="square-button" routerLink="/posts/{{post.id}}">
+      <mat-icon>info</mat-icon>
+      Leer más
+    </button>
+  </mat-card-actions>
+</mat-card>
