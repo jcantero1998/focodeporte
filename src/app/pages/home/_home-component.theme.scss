@@ -6,8 +6,4 @@
     background-image: linear-gradient(to top left, mat.get-theme-color($theme, primary), mat.get-theme-color($theme, inverse-primary), mat.get-theme-color($theme, surface));
   }
 
-  .home-main-content{
-    background-image: linear-gradient(to left, mat.get-theme-color($theme, primary), mat.get-theme-color($theme, inverse-primary));
-  }
-
 }

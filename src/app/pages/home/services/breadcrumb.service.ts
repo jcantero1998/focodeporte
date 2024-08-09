@@ -49,19 +49,19 @@ export class BreadcrumbService {
   }
 
   scrollToHomeSection() {
-    this.home!.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
+    this.home!.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   scrollToServicesSection() {
-    this.services!.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
+    this.services!.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   scrollToPostsSection() {
-    this.posts!.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
+    this.posts!.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   scrollToinstagramSection() {
-    this.instagram!.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
+    this.instagram!.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
 }

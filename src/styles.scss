@@ -1,7 +1,6 @@
 @use "@angular/material" as mat;
 @use "./app/layout/layout-component.theme";
 @use "./app/pages/home/home-component.theme";
-@use "./app/pages/home/components/services/services-component.theme";
 @use "../m3-theme";
 
 @include mat.core();
@@ -12,7 +11,6 @@ $dark-theme: m3-theme.$dark-theme;
 .light-theme {
   @include mat.all-component-themes($light-theme);
   @include layout-component.theme($light-theme);
-  @include services-component.theme($light-theme);
   @include home-component.theme($light-theme);
   @include mat.color-variants-backwards-compatibility($light-theme);
 }
@@ -20,7 +18,6 @@ $dark-theme: m3-theme.$dark-theme;
 .dark-theme {
   @include mat.all-component-themes($dark-theme);
   @include layout-component.theme($dark-theme);
-  @include services-component.theme($dark-theme);
   @include home-component.theme($dark-theme);
   @include mat.color-variants-backwards-compatibility($dark-theme);
 }

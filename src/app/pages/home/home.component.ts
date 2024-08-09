@@ -63,7 +63,7 @@ export class DashboardComponent implements AfterViewInit{
   }
 
   scrollToServicesSection() {
-    this.services!.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
+    this.services!.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   onSectionChange(section: any) {
