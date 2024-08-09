@@ -1,0 +1,37 @@
+<div class="content">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>{{title.getTitle()}}</mat-card-title>
+      </mat-card-title-group>
+    </mat-card-header>
+    <form [formGroup]="newPostForm" (ngSubmit)="sendEmail()">
+      <mat-card-content>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput placeholder="Título" formControlName="title">
+          @if (newPostForm.controls['title'].hasError('required')) {
+          <mat-error>El título es requerido</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput placeholder="Descripción" formControlName="description">
+          @if (newPostForm.controls['description'].hasError('required')) {
+          <mat-error>La descripción es requerida</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput placeholder="Imagen" formControlName="image">
+        </mat-form-field>
+
+        <quill-editor formControlName="content" theme="snow"></quill-editor>
+
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-flat-button [disabled]="!newPostForm.valid" type="submit">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

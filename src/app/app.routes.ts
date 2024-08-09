@@ -39,9 +39,17 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'blog',
-    loadComponent: () => import('./pages/blog/blog.component').then((c) => c.BlogComponent),
-    title: 'Blog',
+    path: 'posts',
+    loadComponent: () => import('./pages/posts/posts.component').then((c) => c.PostsComponent),
+    title: 'Posts',
+    data: {
+      icon: 'chat'
+    }
+  },
+  {
+    path: 'new-post',
+    loadComponent: () => import('./pages/new-post/new-post.component').then((c) => c.NewPostComponent),
+    title: 'Añadir Post',
     data: {
       icon: 'chat'
     }
