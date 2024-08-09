@@ -38,8 +38,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 })
 export class DashboardComponent implements AfterViewInit{
 
-  private layoutService = inject(LayoutService);
   private breadcrumbService = inject(BreadcrumbService);
+
+  layoutService = inject(LayoutService);
 
   @ViewChild('home', { read: ElementRef }) home: ElementRef | undefined;
   @ViewChild('services', { read: ElementRef }) services: ElementRef | undefined;

@@ -1,13 +1,10 @@
 import { AfterViewInit, Component, ElementRef, HostListener, inject, ViewChild } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
 import { routes } from '../app.routes';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FooterComponent } from "../shared/components/footer/footer.component";
@@ -37,16 +34,10 @@ export class LayoutComponent implements AfterViewInit{
 
   @ViewChild('toolbar', { read: ElementRef }) toolbar: ElementRef | undefined;
 
-  private breakpointObserver = inject(BreakpointObserver);
   private themeService = inject(ThemeService);
   private layoutService = inject(LayoutService);
 
   rootRoutes = routes.filter(r=>r.path);
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
 
   ngAfterViewInit(): void {
     this.setlayoutHeight();

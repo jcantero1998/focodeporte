@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { Route, RouterLink, RouterLinkActive } from '@angular/router';
 import { ThemeService } from '@shared/services/theme.service';
+import { LayoutService } from '@shared/services/layout.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -28,9 +29,10 @@ import { ThemeService } from '@shared/services/theme.service';
 export class ToolbarComponent {
   @Input({ required: true }) drawer!: MatDrawer;
   @Input({ required: true }) rootRoutes!: Route[];
-  @Input({ required: true }) isHandset$!: Observable<boolean>;
 
   private themeService = inject(ThemeService);
+
+  public layoutService = inject(LayoutService);
 
   toggleTheme(): void {
     this.themeService.toggleTheme();
