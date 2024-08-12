@@ -10,39 +10,7 @@
     <home-services />
   </div>
   <div id="posts" #posts appSectionObserver (sectionChange)="onSectionChange($event)">
-    <mat-toolbar>
-      @if (!(layoutService.isHandset$ | async)) {
-        <mat-icon>description</mat-icon>
-      }
-      <span>Últimas publicaciones</span>
-      <span class="toolbar-spacer"></span>
-      @if (!(layoutService.isHandset$ | async)) {
-        <button mat-button aria-label="Example icon-button with heart icon" routerLink="/new-post">
-          <mat-icon>note_add</mat-icon>
-          Añadir post
-        </button>
-        <button mat-button aria-label="Example icon-button with share icon">
-          <mat-icon>my_library_books</mat-icon>
-          Ver más
-        </button>
-      } @else {
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item routerLink="/new-post">
-            <mat-icon>note_add</mat-icon>
-            <span>Añadir post</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>my_library_books</mat-icon>
-            <span>Ver más</span>
-          </button>
-        </mat-menu>
-      }
-
-    </mat-toolbar>
-    <app-posts />
+    <home-publications />
   </div>
 
   <!-- TODO: Instagram

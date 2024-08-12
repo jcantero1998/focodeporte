@@ -1,5 +1,9 @@
-.title{
-  margin-left: 15px;
+mat-toolbar {
+  box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
 }
 
 .container {

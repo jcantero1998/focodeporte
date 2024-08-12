@@ -1,10 +1,5 @@
 import { Component, ElementRef, inject, ViewChild, effect, AfterViewInit } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 import { ImageSliderComponent } from "../../shared/components/image-slider/image-slider.component";
 import { LayoutService } from '@shared/services/layout.service';
 import { BreadcrumbComponent } from "./components/breadcrumb/breadcrumb.component";
@@ -13,7 +8,7 @@ import { SectionObserverDirective } from '@shared/directives/section-observer.di
 import { ServicesComponent } from "./components/services/services.component";
 import { InstagramComponent } from "./components/instagram/instagram.component";
 import { PostsComponent } from "../posts/posts.component";
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { PublicationsComponent } from "./publications/publications.component";
 
 @Component({
   selector: 'app-home',
@@ -21,19 +16,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   styleUrl: './home.component.scss',
   standalone: true,
   imports: [
-    AsyncPipe,
-    MatGridListModule,
-    MatMenuModule,
     MatIconModule,
-    MatButtonModule,
-    MatCardModule,
     ImageSliderComponent,
     BreadcrumbComponent,
     SectionObserverDirective,
     ServicesComponent,
     PostsComponent,
     InstagramComponent,
-    MatToolbarModule
+    PublicationsComponent
 ]
 })
 export class DashboardComponent implements AfterViewInit{

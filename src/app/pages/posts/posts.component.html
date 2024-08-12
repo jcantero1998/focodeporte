@@ -1,3 +1,7 @@
+<section class="title">
+  <h1>{{title.getTitle()}}</h1>
+</section>
+
 <div class="container">
   @for (post of posts(); track $index) {
     <app-post [post]="post"></app-post>
