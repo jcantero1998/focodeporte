@@ -10,11 +10,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Post } from '@core/models/post.interfaces';
 import { PostsService } from '@shared/services/posts.service';
 import { tap } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'home-publications',
   standalone: true,
-  imports: [MatToolbarModule, MatIconModule, AsyncPipe, MatMenuModule, MatButtonModule, PostComponent],
+  imports: [MatToolbarModule, MatIconModule, AsyncPipe, MatMenuModule, MatButtonModule, PostComponent, RouterModule],
   templateUrl: './publications.component.html',
   styleUrl: './publications.component.scss'
 })
