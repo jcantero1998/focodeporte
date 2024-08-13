@@ -69,6 +69,7 @@ export class NewPostComponent {
   resetForm() {
     this.newPostForm.reset();
     this.fileInput!.nativeElement.value = '';
+    this.imageFile = undefined;
     Object.keys(this.newPostForm.controls).forEach(key => {
       this.newPostForm.get(key)!.setErrors(null) ;
     });

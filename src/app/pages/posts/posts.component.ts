@@ -36,7 +36,6 @@ export class PostsComponent implements OnInit {
     } catch (error) {
       console.error('Error al obtener los posts:', error);
     } finally {
-      console.log('Posts fetched successfully');
       this._spinnerService.hide();
     }
   }

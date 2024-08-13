@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
+import { Storage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from '@angular/fire/storage';
 import { DocumentData, DocumentReference, Firestore, addDoc, collection, collectionData, deleteDoc, doc, getDoc, orderBy, query, updateDoc } from '@angular/fire/firestore';
 import { Post } from '@core/models/post.interfaces';
 import { APP_CONSTANTS } from '@shared/constants';
@@ -78,9 +78,18 @@ export class PostsService {
     updateDoc(docRef, { ...post });
   }
 
-  deletePost(id: string):void {
-    const docRef = this._getDocRef(id);
-    deleteDoc(docRef);
+  async deletePost(id: string, post: Post):Promise<void> {
+    try {
+      if (post.image) {
+        const imageRef = ref(this._storage, post.image);
+        await deleteObject(imageRef);
+      }
+      const docRef = this._getDocRef(id);
+      return deleteDoc(docRef);
+    } catch (error) {
+      console.error("Error al eliminar el post:", error);
+      throw error;
+    }
   }
 
   private _getDocRef(id: string) {

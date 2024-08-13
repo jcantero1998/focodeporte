@@ -1,9 +1,20 @@
 
-@if (posts()) {
+@if (post()) {
   <div class="post-container">
-    <h1 class="title">{{ posts()!.title }}</h1>
-    <img [src]="posts()!.image" alt="{{ posts()!.title }}">
-    <div [innerHTML]="posts()!.content"></div>
+    <h1 class="title">{{ post()!.title }}</h1>
+    <img [src]="post()!.image" alt="{{ post()!.title }}">
+    <div [innerHTML]="post()!.content"></div>
+
+    <div class="buttons-container">
+      <button mat-stroked-button class="square-button" routerLink="/posts/{{post()!.id}}">
+        <mat-icon>edit</mat-icon>
+        Editar
+      </button>
+      <button mat-stroked-button class="square-button" (click)="delete()">
+        <mat-icon>delete</mat-icon>
+        Eliminar
+      </button>
+    </div>
   </div>
 }@else {
   <h1 class="title">No se ha encontrado el post</h1>
