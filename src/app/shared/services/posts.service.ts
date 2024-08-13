@@ -77,8 +77,8 @@ export class PostsService {
     try {
       let image = '';
       if (imageFile) {
-        const post = await this.getPostById(id);
-        if (post.image) await this.deleteImage(post.image);
+        const postById = await this.getPostById(id);
+        if (postById.image) await this.deleteImage(postById.image);
         image = await this.uploadImage(imageFile);
         post.image = image;
       }
@@ -93,10 +93,20 @@ export class PostsService {
 
   }
 
-  deleteImage(imageUrl: string): Promise<void> {
-    //TODO: Comprobar que existe antes de eliminarlo para que no de error
+  async deleteImage(imageUrl: string): Promise<void> {
     const imageRef = ref(this._storage, imageUrl);
-    return deleteObject(imageRef);
+    try {
+      await getDownloadURL(imageRef);
+      await deleteObject(imageRef);
+      console.log('Imagen eliminada correctamente.');
+    } catch (error: any) {
+      if (error.code === 'storage/object-not-found') {
+        console.log('Imagen no encontrada, no es necesario eliminarla.');
+      } else {
+        console.error('Error al intentar eliminar la imagen:', error);
+        throw error;
+      }
+    }
   }
 
   async deletePost(id: string, post: Post): Promise<void> {
