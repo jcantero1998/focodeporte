@@ -1,16 +1,16 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { LayoutService } from '@shared/services/layout.service';
 import { PostComponent } from "../../../shared/components/post/post.component";
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Post } from '@core/models/post.interfaces';
 import { PostsService } from '@shared/services/posts.service';
-import { tap } from 'rxjs';
+import { firstValueFrom, tap } from 'rxjs';
 import { RouterModule } from '@angular/router';
+import { SpinnerService } from '@core/services/spinner.service';
 
 @Component({
   selector: 'home-publications',
@@ -22,7 +22,7 @@ import { RouterModule } from '@angular/router';
 export class PublicationsComponent implements OnInit {
 
   private readonly postsService = inject(PostsService);
-  private readonly _destroyRef = inject(DestroyRef);
+  private readonly _spinnerService = inject(SpinnerService)
 
   layoutService = inject(LayoutService);
   posts = signal<Post[]>([]);
@@ -32,13 +32,20 @@ export class PublicationsComponent implements OnInit {
     this.getPosts();
   }
 
-  getPosts() {
-    this.postsService.getAllPosts()
-      .pipe(
-        takeUntilDestroyed(this._destroyRef),
-        tap((posts:Post[]) => this.posts.set(posts))
-      )
-    .subscribe()
+  async getPosts() {
+    try {
+      this._spinnerService.show()
+      await firstValueFrom(
+        this.postsService.getAllPosts().pipe(
+          tap((posts: Post[]) => this.posts.set(posts))
+        )
+      );
+    } catch (error) {
+      console.error('Error al obtener los posts:', error);
+    } finally {
+      console.log('Posts fetched successfully');
+      this._spinnerService.hide();
+    }
   }
 
 }
