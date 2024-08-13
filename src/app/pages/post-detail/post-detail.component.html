@@ -6,7 +6,7 @@
     <div [innerHTML]="post()!.content"></div>
 
     <div class="buttons-container">
-      <button mat-stroked-button class="square-button" routerLink="/posts/{{post()!.id}}">
+      <button mat-stroked-button class="square-button" routerLink="/edit-post/{{postId}}">
         <mat-icon>edit</mat-icon>
         Editar
       </button>

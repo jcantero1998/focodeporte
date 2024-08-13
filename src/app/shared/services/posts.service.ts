@@ -73,17 +73,35 @@ export class PostsService {
     return documentData.data() as Post;
   }
 
-  updatePost(id: string, post: Post):void {
-    const docRef = this._getDocRef(id);
-    updateDoc(docRef, { ...post });
+  async updatePost(id: string, post: Post, imageFile?: File): Promise<void> {
+    try {
+      let image = '';
+      if (imageFile) {
+        const post = await this.getPostById(id);
+        if (post.image) await this.deleteImage(post.image);
+        image = await this.uploadImage(imageFile);
+        post.image = image;
+      }
+      post.updated = Date.now();
+      const docRef = this._getDocRef(id);
+      return updateDoc(docRef, { ...post });
+
+    } catch (error) {
+      console.error("Error al editar el post:", error);
+      throw error;
+    }
+
   }
 
-  async deletePost(id: string, post: Post):Promise<void> {
+  deleteImage(imageUrl: string): Promise<void> {
+    //TODO: Comprobar que existe antes de eliminarlo para que no de error
+    const imageRef = ref(this._storage, imageUrl);
+    return deleteObject(imageRef);
+  }
+
+  async deletePost(id: string, post: Post): Promise<void> {
     try {
-      if (post.image) {
-        const imageRef = ref(this._storage, post.image);
-        await deleteObject(imageRef);
-      }
+      if (post.image) await this.deleteImage(post.image);
       const docRef = this._getDocRef(id);
       return deleteDoc(docRef);
     } catch (error) {

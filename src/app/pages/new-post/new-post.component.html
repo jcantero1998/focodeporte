@@ -11,25 +11,29 @@
         <mat-form-field appearance="outline" class="full-width">
           <input matInput placeholder="Título" formControlName="title">
           @if (newPostForm.controls['title'].hasError('required')) {
-          <mat-error>El título es requerido</mat-error>
+            <mat-error>El título es requerido</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
           <input matInput placeholder="Descripción" formControlName="description">
           @if (newPostForm.controls['description'].hasError('required')) {
-          <mat-error>La descripción es requerida</mat-error>
+            <mat-error>La descripción es requerida</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Archivo</mat-label>
-          <input matInput [value]="imageFile?.name" readonly (click)="fileInput.click()">
+          <input matInput [value]="imageFile?.name || imageFileUrl || ''" readonly (click)="fileInput.click()">
           <button mat-icon-button matSuffix (click)="fileInput.click()" type="button">
             <mat-icon>attach_file</mat-icon>
           </button>
           <input type="file" hidden #fileInput (change)="onFileSelected($event)">
         </mat-form-field>
+
+        @if (imageFileUrl) {
+          <img [src]="imageFileUrl" alt="Image preview" style="max-width: 100%; margin-bottom: 15px;">
+        }
 
         <quill-editor formControlName="content" theme="snow"></quill-editor>
 

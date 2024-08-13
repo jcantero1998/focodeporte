@@ -8,6 +8,6 @@ export interface Post {
   description: string;
   image?: string;
   content: string;
-  created: Timestamp;
-  updated: Timestamp;
+  created: number;
+  updated: number;
 }

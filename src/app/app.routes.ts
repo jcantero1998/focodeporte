@@ -55,6 +55,14 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'edit-post/:id',
+    loadComponent: () => import('./pages/new-post/new-post.component').then((c) => c.NewPostComponent),
+    title: 'Editar Post',
+    data: {
+      icon: 'chat'
+    }
+  },
+  {
     path: 'posts/:id',
     loadComponent: () => import('./pages/post-detail/post-detail.component').then((c) => c.PostDetailComponent),
     title: 'Detalle del Post',
