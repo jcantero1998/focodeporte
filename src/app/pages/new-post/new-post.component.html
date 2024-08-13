@@ -22,7 +22,14 @@
           }
         </mat-form-field>
 
-        <input #fileInput type="file" (change)="onFileSelected($event)" />
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Archivo</mat-label>
+          <input matInput [value]="imageFile?.name" readonly (click)="fileInput.click()">
+          <button mat-icon-button matSuffix (click)="fileInput.click()" type="button">
+            <mat-icon>attach_file</mat-icon>
+          </button>
+          <input type="file" hidden #fileInput (change)="onFileSelected($event)">
+        </mat-form-field>
 
         <quill-editor formControlName="content" theme="snow"></quill-editor>
 
@@ -30,6 +37,7 @@
       <mat-card-actions align="end">
         <button mat-flat-button [disabled]="!newPostForm.valid" type="submit">Submit</button>
       </mat-card-actions>
+
     </form>
   </mat-card>
 </div>

@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { QuillModule } from 'ngx-quill';
 import { PostsService } from '@shared/services/posts.service';
 import { SpinnerService } from '@core/services/spinner.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-new-post',
@@ -23,7 +24,8 @@ import { SpinnerService } from '@core/services/spinner.service';
     MatRadioModule,
     MatCardModule,
     ReactiveFormsModule,
-    QuillModule
+    QuillModule,
+    MatIconModule
   ]
 })
 export class NewPostComponent {
@@ -40,7 +42,7 @@ export class NewPostComponent {
   newPostForm: FormGroup = this._formBuilder.group({
     title: ['', Validators.required],
     description: ['', Validators.required],
-    content: ''
+    content: '',
   });
 
   onFileSelected(event: any): void {
