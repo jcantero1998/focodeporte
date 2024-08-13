@@ -54,4 +54,12 @@ export const routes: Routes = [
       icon: 'chat'
     }
   },
+  {
+    path: 'posts/:id',
+    loadComponent: () => import('./pages/post-detail/post-detail.component').then((c) => c.PostDetailComponent),
+    title: 'Detalle del Post',
+    data: {
+      icon: 'article'
+    }
+  },
 ];

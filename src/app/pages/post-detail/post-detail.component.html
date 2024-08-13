@@ -1,0 +1,10 @@
+
+@if (posts()) {
+  <div class="post-container">
+    <h1 class="title">{{ posts()!.title }}</h1>
+    <img [src]="posts()!.image" alt="{{ posts()!.title }}">
+    <div [innerHTML]="posts()!.content"></div>
+  </div>
+}@else {
+  <h1 class="title">No se ha encontrado el post</h1>
+}
