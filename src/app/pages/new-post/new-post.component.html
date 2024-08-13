@@ -22,9 +22,7 @@
           }
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="full-width">
-          <input matInput placeholder="Imagen" formControlName="image">
-        </mat-form-field>
+        <input #fileInput type="file" (change)="onFileSelected($event)" />
 
         <quill-editor formControlName="content" theme="snow"></quill-editor>
 

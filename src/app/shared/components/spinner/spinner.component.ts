@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SpinnerService } from '../../../core/services/spinner.service';
 
 @Component({

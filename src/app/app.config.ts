@@ -4,8 +4,9 @@ import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { provideStorage, getStorage } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { spinnerInterceptor } from '@core/interceptors/spinner.interceptor';
 import { QuillModule } from 'ngx-quill';
 
@@ -16,7 +17,8 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    provideHttpClient(withInterceptors([spinnerInterceptor])),
+    provideStorage(() => getStorage()),
+    provideHttpClient(withFetch(), withInterceptors([spinnerInterceptor])),
     importProvidersFrom(QuillModule.forRoot())
   ]
 };

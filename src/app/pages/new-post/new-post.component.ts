@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,6 +9,7 @@ import { Title } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { QuillModule } from 'ngx-quill';
 import { PostsService } from '@shared/services/posts.service';
+import { SpinnerService } from '@core/services/spinner.service';
 
 @Component({
   selector: 'app-new-post',
@@ -27,37 +28,45 @@ import { PostsService } from '@shared/services/posts.service';
 })
 export class NewPostComponent {
 
-  title = inject(Title);
-  private formBuilder = inject(FormBuilder);
-  private snackBar = inject(MatSnackBar);
-  private postService = inject(PostsService);
+  @ViewChild('fileInput') fileInput: ElementRef<HTMLInputElement> | undefined;
 
-  newPostForm: FormGroup = this.formBuilder.group({
+  private _formBuilder = inject(FormBuilder);
+  private _snackBar = inject(MatSnackBar);
+  private readonly _postService = inject(PostsService);
+  private readonly _spinnerService = inject(SpinnerService)
+
+  title = inject(Title);
+  imageFile: File | undefined;
+  newPostForm: FormGroup = this._formBuilder.group({
     title: ['', Validators.required],
     description: ['', Validators.required],
-    image: '',
     content: ''
   });
 
+  onFileSelected(event: any): void {
+    this.imageFile = event.target.files[0];
+  }
 
   async onSubmit() {
     if (this.newPostForm.valid) {
-      const post = this.newPostForm.value;
-      console.log(post);
       try {
-        const response = await this.postService.newPost(post);
+        this._spinnerService.show()
+        const response = await this._postService.newPost(this.newPostForm.value, this.imageFile);
         console.log('SUCCESS!', response);
-        this.snackBar.open("Post creado con éxito", "Cerrar");
+        this._snackBar.open("Post creado con éxito", "Cerrar");
         this.resetForm();
       } catch (error) {
         console.error('FAILED...', error);
-        this.snackBar.open("Se ha producido un error", "Cerrar");
+        this._snackBar.open("Se ha producido un error", "Cerrar");
+      } finally {
+        this._spinnerService.hide();
       }
     }
   }
 
   resetForm() {
     this.newPostForm.reset();
+    this.fileInput!.nativeElement.value = '';
     Object.keys(this.newPostForm.controls).forEach(key => {
       this.newPostForm.get(key)!.setErrors(null) ;
     });
