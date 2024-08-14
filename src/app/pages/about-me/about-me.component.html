@@ -1,1 +1,51 @@
-<p>about-me works!</p>
+<div class="header">
+  <img src="images/marina.png" alt="Profile Picture" class="profile-img" />
+  <div class="header-text">
+    <h1>¡Hola! 🙋🏻‍♀️</h1>
+    <p>Soy Marina Uría y soy psicóloga deportiva.</p>
+    <p>Tras terminar el grado de Psicología, me interesé por seguir descubriendo, tanto académica como profesionalmente, el complejo mundo de la salud mental, el bienestar y el crecimiento personal de las personas. 🧠</p>
+    <p>Poco después, como deportista que soy, decidí convertir mi pasión en mi profesión y me especialicé en Psicología Deportiva y del Alto Rendimiento a través de la UNED. 🏅🏋🏽‍♀️</p>
+    <p>Mi objetivo es ayudar a los atletas a alcanzar su máximo potencial. Creo que el factor mental es tan importante como el técnico, táctico o físico en el deporte</p>
+    <p>Además de la psicología y el deporte, soy una apasionada del arte y la naturaleza. Disfruto al máximo de los momentos familiares e incluso las conversaciones más simples con las personas que quiero.</p>
+  </div>
+</div>
+
+<div class="profile-card">
+
+  <mat-expansion-panel class="academic-info">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h2>
+          Formación académica
+        </h2>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <about-me-timeline [timeline]="academicExperience"></about-me-timeline>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel class="experience-info">
+    <mat-expansion-panel-header>
+      <mat-panel-title class="experience-info-title">
+        <h2>
+          Experiencia profesional
+        </h2>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <about-me-timeline [timeline]="professionalExperience"></about-me-timeline>
+  </mat-expansion-panel>
+
+  <div class="help-section">
+    <h2>¿En qué puedo ayudarte?</h2>
+    <p>A pesar de especializarme en varios ámbitos de la salud mental, actualmente me enfoco en el trabajo con deportistas, entrenadores y directivos desde el área de la psicología. </p>
+    <p>Mi trabajo tanto con atletas individuales como con equipos incluye la evaluación y el asesoramiento individual, la realización de talleres y dinamización de grupos, la preparación mental para la competición y el asesoramiento organizacional en club deportivos. </p>
+    <p>Enseño y ayudo a deportistas a:</p>
+    <ul>
+      <li>Enseñar y ayudar a deportistas a manejar el estrés y la ansiedad 🧘🏻‍♀️</li>
+      <li>Potenciar la motivación y la autoconfianza 💪🏻</li>
+      <li>Entrenar la atención y concentración 🙇🏻</li>
+      <li>Generar cohesión y dinámicas motivacionales positivas en deportes de equipo ⛹️🏻‍♂️</li>
+      <li>Establecer objetivos realistas y atractivos 🚩</li>
+      <li>Adquirir estrategias mentales realmente útiles en el deporte, como son la visualización o la relajación🧠</li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="timeline-container">
+  @for (item of timeline; track $index) {
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>{{ item.year }}</h3>
+        <span>{{ item.description }}</span>
+        @if (item.details) {
+          <div class="timeline-details">
+            @if (item.detailsIcon) {
+              <mat-icon>{{ item.detailsIcon }}</mat-icon>
+            }
+            <span>{{ item.details }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>
