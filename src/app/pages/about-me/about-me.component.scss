@@ -5,9 +5,7 @@
 .header {
   display: flex;
   align-items: center;
-  background-color: #e3f2fd;
   padding: 20px;
-  border-radius: 8px 8px 0 0;
   flex-direction: column;
 }
 
@@ -54,10 +52,10 @@ h2 {
   word-wrap: break-word;
 }
 
-mat-expansion-panel {
-  margin-top: 20px;
+.timeline {
+  background-color: red;
 }
 
-.help-section {
-  padding: 10px;
+.help-content {
+  padding: 0 10px 10px 10px;
 }

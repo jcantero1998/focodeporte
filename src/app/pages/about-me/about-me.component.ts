@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { TimelineComponent } from "./components/timeline/timeline.component";
 import { Timeline } from './interfaces/timeline.interface';
 

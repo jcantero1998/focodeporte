@@ -1,0 +1,27 @@
+@use "@angular/material" as mat;
+
+
+
+@mixin theme($theme) {
+
+  .header {
+    background-color: mat.get-theme-color($theme, inverse-primary);
+  }
+
+  .help-title {
+    padding: 10px;
+    border-bottom: 2px solid  mat.get-theme-color($theme, on-surface);
+  }
+
+  .mat-expansion-panel {
+    margin-top: 20px;
+    border-radius: 0;
+    border-bottom: 2px solid  mat.get-theme-color($theme, on-surface);
+  }
+
+  .mat-expansion-panel-header {
+    padding: 0 10px;
+  }
+
+
+}
