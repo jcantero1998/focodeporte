@@ -1,47 +1,46 @@
-<div class="content">
-  <mat-card appearance="outlined">
-    <mat-card-header>
-      <mat-card-title-group>
-        <mat-card-title>{{title.getTitle()}}</mat-card-title>
-      </mat-card-title-group>
-    </mat-card-header>
-    <form [formGroup]="contactForm" (ngSubmit)="sendEmail()">
-      <mat-card-content>
+<section class="title">
+  <h1>{{title.getTitle()}}</h1>
+</section>
 
-        <mat-form-field appearance="outline" class="full-width">
-          <input matInput placeholder="Nombre completo" formControlName="from_name">
-          @if (contactForm.controls['from_name'].hasError('required')) {
-          <mat-error>El nombre es requerido</mat-error>
-          }
-        </mat-form-field>
+<section class="form-container">
+  <form [formGroup]="contactForm" (ngSubmit)="sendEmail()">
 
-        <mat-form-field appearance="outline" class="full-width">
-          <input matInput type="email" placeholder="Correo" formControlName="from_email">
-          @if (contactForm.controls['from_email'].hasError('required')) {
-          <mat-error>El correo es requerido</mat-error>
-          } @else if (contactForm.controls['from_email'].hasError('email')) {
-            <mat-error>El correo no es válido</mat-error>
-          }
-        </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <input matInput placeholder="Nombre completo" formControlName="from_name">
+        @if (contactForm.controls['from_name'].hasError('required')) {
+        <mat-error>El nombre es requerido</mat-error>
+        }
+      </mat-form-field>
 
-        <mat-form-field appearance="outline" class="full-width">
-          <input matInput type="email" placeholder="Asunto" formControlName="subject">
-          @if (contactForm.controls['subject'].hasError('required')) {
-          <mat-error>El asunto es requerido</mat-error>
-          }
-        </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <input matInput type="email" placeholder="Correo" formControlName="from_email">
+        @if (contactForm.controls['from_email'].hasError('required')) {
+        <mat-error>El correo es requerido</mat-error>
+        } @else if (contactForm.controls['from_email'].hasError('email')) {
+          <mat-error>El correo no es válido</mat-error>
+        }
+      </mat-form-field>
 
-        <mat-form-field appearance="outline" class="full-width">
-          <textarea matInput placeholder="Mensaje" formControlName="message"></textarea>
-          @if (contactForm.controls['message'].hasError('required')) {
-          <mat-error>El mensaje es requerido</mat-error>
-          }
-        </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <input matInput type="email" placeholder="Asunto" formControlName="subject">
+        @if (contactForm.controls['subject'].hasError('required')) {
+        <mat-error>El asunto es requerido</mat-error>
+        }
+      </mat-form-field>
 
-      </mat-card-content>
-      <mat-card-actions align="end">
-        <button mat-flat-button [disabled]="!contactForm.valid" type="submit">Submit</button>
-      </mat-card-actions>
-    </form>
-  </mat-card>
-</div>
+      <mat-form-field appearance="outline" class="full-width">
+        <textarea matInput placeholder="Mensaje" formControlName="message"></textarea>
+        @if (contactForm.controls['message'].hasError('required')) {
+        <mat-error>El mensaje es requerido</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="button-container">
+        <button mat-stroked-button class="square-button" [disabled]="!contactForm.valid" type="submit">
+          <mat-icon>send</mat-icon>
+          Enviar
+        </button>
+      </div>
+
+  </form>
+</section>

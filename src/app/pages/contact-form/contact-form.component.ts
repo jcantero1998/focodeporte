@@ -9,6 +9,7 @@ import { Title } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EmailMessage } from '../../core/models/email-message.interface';
 import { EmailService } from '../../shared/services/email.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-contact-form',
@@ -21,7 +22,8 @@ import { EmailService } from '../../shared/services/email.service';
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule
   ]
 })
 export class AddressFormComponent {

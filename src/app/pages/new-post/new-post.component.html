@@ -1,47 +1,45 @@
-<div class="content">
-  <mat-card appearance="outlined">
-    <mat-card-header>
-      <mat-card-title-group>
-        <mat-card-title>{{title.getTitle()}}</mat-card-title>
-      </mat-card-title-group>
-    </mat-card-header>
-    <form [formGroup]="newPostForm" (ngSubmit)="onSubmit()">
-      <mat-card-content>
+<section class="title">
+  <h1>{{title.getTitle()}}</h1>
+</section>
 
-        <mat-form-field appearance="outline" class="full-width">
-          <input matInput placeholder="Título" formControlName="title">
-          @if (newPostForm.controls['title'].hasError('required')) {
-            <mat-error>El título es requerido</mat-error>
-          }
-        </mat-form-field>
+<section class="form-container">
+  <form [formGroup]="newPostForm" (ngSubmit)="onSubmit()">
 
-        <mat-form-field appearance="outline" class="full-width">
-          <input matInput placeholder="Descripción" formControlName="description">
-          @if (newPostForm.controls['description'].hasError('required')) {
-            <mat-error>La descripción es requerida</mat-error>
-          }
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Archivo</mat-label>
-          <input matInput [value]="imageFile?.name || imageFileUrl || ''" readonly (click)="fileInput.click()">
-          <button mat-icon-button matSuffix (click)="fileInput.click()" type="button">
-            <mat-icon>attach_file</mat-icon>
-          </button>
-          <input type="file" hidden #fileInput (change)="onFileSelected($event)">
-        </mat-form-field>
-
-        @if (imageFileUrl) {
-          <img [src]="imageFileUrl" alt="Image preview" style="max-width: 100%; margin-bottom: 15px;">
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Título" formControlName="title">
+        @if (newPostForm.controls['title'].hasError('required')) {
+          <mat-error>El título es requerido</mat-error>
         }
+      </mat-form-field>
 
-        <quill-editor formControlName="content" theme="snow"></quill-editor>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Descripción" formControlName="description">
+        @if (newPostForm.controls['description'].hasError('required')) {
+          <mat-error>La descripción es requerida</mat-error>
+        }
+      </mat-form-field>
 
-      </mat-card-content>
-      <mat-card-actions align="end">
-        <button mat-flat-button [disabled]="!newPostForm.valid" type="submit">Submit</button>
-      </mat-card-actions>
+      <mat-form-field appearance="outline">
+        <mat-label>Archivo</mat-label>
+        <input matInput [value]="imageFile?.name || imageFileUrl || ''" readonly (click)="fileInput.click()">
+        <button mat-icon-button matSuffix (click)="fileInput.click()" type="button">
+          <mat-icon>attach_file</mat-icon>
+        </button>
+        <input type="file" hidden #fileInput (change)="onFileSelected($event)">
+      </mat-form-field>
 
-    </form>
-  </mat-card>
-</div>
+      @if (imageFileUrl) {
+        <img [src]="imageFileUrl" alt="Image preview">
+      }
+
+      <quill-editor formControlName="content" theme="snow"></quill-editor>
+
+      <div class="button-container">
+        <button mat-stroked-button class="square-button" [disabled]="!newPostForm.valid" type="submit">
+          <mat-icon>save</mat-icon>
+          Guardar
+        </button>
+      </div>
+
+  </form>
+</section>
