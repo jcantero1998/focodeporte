@@ -4,12 +4,12 @@ import { ImageSliderComponent } from "../../../../shared/components/image-slider
 import { Slide } from '@core/models/slide.interface';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'home-services',
   standalone: true,
-  imports: [ImageSliderComponent, MatCardModule, MatButtonModule, MatIconModule],
+  imports: [ImageSliderComponent, MatCardModule, MatButtonModule, MatIconModule, RouterModule],
   templateUrl: './services.component.html',
   styleUrl: './services.component.scss'
 })
