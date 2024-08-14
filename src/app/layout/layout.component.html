@@ -3,10 +3,12 @@
     <mat-toolbar>Menú</mat-toolbar>
     <mat-nav-list>
       @for (item of rootRoutes; track $index) {
+        @if (item.data?.['display']) {
         <mat-list-item [routerLink]="item.path" #link="routerLinkActive" routerLinkActive [activated]="link.isActive" (click)="drawer.close()">
           <mat-icon matListItemIcon>{{ item.data?.['icon'] }}</mat-icon>
           <div matListItemTitle>{{ item.title }}</div>
         </mat-list-item>
+        }
       }
       <mat-list-item class="horizontal-mat-list-item" (click)="toggleTheme()">
         <mat-icon matListItemIcon>{{ isDarkMode() ? 'brightness_1' : 'brightness_2' }}</mat-icon>
