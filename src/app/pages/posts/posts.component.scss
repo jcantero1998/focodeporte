@@ -1,5 +1,9 @@
 .title{
-  margin-left: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .container {
@@ -7,6 +11,10 @@
   gap: 15px;
   padding: 20px;
   justify-items: center;
+}
+
+.square-button{
+  border-radius: 5px;
 }
 
 @media (min-width: 600px) {

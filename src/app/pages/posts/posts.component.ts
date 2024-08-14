@@ -2,14 +2,16 @@ import { Component, inject,  OnInit, signal } from '@angular/core';
 import { Post } from '@core/models/post.interfaces';
 import { PostsService } from '@shared/services/posts.service';
 import { firstValueFrom, tap } from 'rxjs';
-import { JsonPipe } from '@angular/common';
 import { PostComponent } from "../../shared/components/post/post.component";
 import { Title } from '@angular/platform-browser';
 import { SpinnerService } from '@core/services/spinner.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-posts',
   standalone: true,
-  imports: [JsonPipe, PostComponent],
+  imports: [PostComponent, MatButtonModule, MatIconModule, RouterModule],
   templateUrl: './posts.component.html',
   styleUrl: './posts.component.scss'
 })
