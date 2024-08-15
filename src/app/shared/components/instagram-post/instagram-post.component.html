@@ -1,0 +1,14 @@
+<mat-card appearance="outlined">
+  <img [src]="post.media_url" alt="Instagram post image" class="post-image" />
+  <mat-card-content>
+    <p class="caption">{{ post.caption }}</p>
+  </mat-card-content>
+  <mat-card-actions class="card-actions">
+    <form action="{{post.permalink}}">
+      <button mat-stroked-button class="square-button" type="submit" mat-button aria-label="Leer más">
+        <mat-icon>info</mat-icon>
+        Leer más
+      </button>
+    </form>
+  </mat-card-actions>
+</mat-card>

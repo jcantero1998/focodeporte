@@ -21,7 +21,7 @@ import { SpinnerService } from '@core/services/spinner.service';
 })
 export class PublicationsComponent implements OnInit {
 
-  private readonly postsService = inject(PostsService);
+  private readonly _postsService = inject(PostsService);
   private readonly _spinnerService = inject(SpinnerService)
 
   layoutService = inject(LayoutService);
@@ -36,7 +36,7 @@ export class PublicationsComponent implements OnInit {
     try {
       this._spinnerService.show()
       await firstValueFrom(
-        this.postsService.getAllPosts().pipe(
+        this._postsService.getAllPosts().pipe(
           tap((posts: Post[]) => this.posts.set(posts))
         )
       );

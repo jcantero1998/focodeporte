@@ -1,0 +1,36 @@
+mat-card {
+  max-width: 350px;
+  height: 100%;
+}
+
+.mat-mdc-card{
+  display: flex;
+  justify-content: space-between
+}
+
+.card-actions {
+  justify-content: center;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.square-button{
+  border-radius: 5px;
+}
+
+.post-image {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.caption {
+  max-height: 4.2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  box-orient: vertical;
+}
